@@ -1,5 +1,5 @@
 //
-//  RCModel.h
+//  RCField.h
 //  RetinaConway
 //
 //  Created by Daniel Clelland on 25/04/12.
@@ -8,8 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RCModel : NSObject
+@interface RCField : NSObject
+{
+    int width;
+    int height;
+    float interval;
+    
+    bool cells;
+    
+    NSTimer *timer;
+}
 
+- (id)initWithSize:(CGSize)size;
+
+- (void)start;
+- (void)stop;
 - (void)updateWithTouches:(NSSet *)touches;
 
 @end

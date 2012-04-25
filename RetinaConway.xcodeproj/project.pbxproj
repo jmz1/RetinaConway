@@ -16,7 +16,7 @@
 		65804C751547EAAC00F9C501 /* RCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C741547EAAC00F9C501 /* RCViewController.m */; };
 		65804C781547EAAC00F9C501 /* RCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65804C761547EAAC00F9C501 /* RCViewController_iPhone.xib */; };
 		65804C7B1547EAAC00F9C501 /* RCViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65804C791547EAAC00F9C501 /* RCViewController_iPad.xib */; };
-		65804C831547EC4E00F9C501 /* RCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C821547EC4E00F9C501 /* RCModel.m */; };
+		65804C831547EC4E00F9C501 /* RCField.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C821547EC4E00F9C501 /* RCField.m */; };
 		65804C8A1547ECEA00F9C501 /* RCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C891547ECEA00F9C501 /* RCView.m */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +35,8 @@
 		65804C741547EAAC00F9C501 /* RCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCViewController.m; sourceTree = "<group>"; };
 		65804C771547EAAC00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RCViewController_iPhone.xib; sourceTree = "<group>"; };
 		65804C7A1547EAAC00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RCViewController_iPad.xib; sourceTree = "<group>"; };
-		65804C811547EC4E00F9C501 /* RCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCModel.h; sourceTree = "<group>"; };
-		65804C821547EC4E00F9C501 /* RCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCModel.m; sourceTree = "<group>"; };
+		65804C811547EC4E00F9C501 /* RCField.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RCField.h; sourceTree = "<group>"; };
+		65804C821547EC4E00F9C501 /* RCField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCField.m; sourceTree = "<group>"; };
 		65804C881547ECEA00F9C501 /* RCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCView.h; sourceTree = "<group>"; };
 		65804C891547ECEA00F9C501 /* RCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,8 +87,8 @@
 			children = (
 				65804C701547EAAB00F9C501 /* RCAppDelegate.h */,
 				65804C711547EAAC00F9C501 /* RCAppDelegate.m */,
-				65804C811547EC4E00F9C501 /* RCModel.h */,
-				65804C821547EC4E00F9C501 /* RCModel.m */,
+				65804C811547EC4E00F9C501 /* RCField.h */,
+				65804C821547EC4E00F9C501 /* RCField.m */,
 				65804C731547EAAC00F9C501 /* RCViewController.h */,
 				65804C741547EAAC00F9C501 /* RCViewController.m */,
 				65804C881547ECEA00F9C501 /* RCView.h */,
@@ -179,7 +179,7 @@
 				65804C6E1547EAAB00F9C501 /* main.m in Sources */,
 				65804C721547EAAC00F9C501 /* RCAppDelegate.m in Sources */,
 				65804C751547EAAC00F9C501 /* RCViewController.m in Sources */,
-				65804C831547EC4E00F9C501 /* RCModel.m in Sources */,
+				65804C831547EC4E00F9C501 /* RCField.m in Sources */,
 				65804C8A1547ECEA00F9C501 /* RCView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +302,7 @@
 				65804C801547EAAC00F9C501 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

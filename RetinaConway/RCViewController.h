@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class RCModel;
+@class RCField;
 
 @interface RCViewController : UIViewController
 {
-    RCModel *model;
+    RCField *field;
 }
 
 @end

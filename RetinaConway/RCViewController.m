@@ -9,7 +9,7 @@
 #import "RCViewController.h"
 #import "RCView.h"
 #import "RCAppDelegate.h"
-#import "RCModel.h"
+#import "RCField.h"
 
 @interface RCViewController ()
 
@@ -23,7 +23,7 @@
     [self.view setMultipleTouchEnabled:YES];
     
     RCAppDelegate *delegate = (RCAppDelegate *)[[UIApplication sharedApplication] delegate];
-    model = [delegate model];
+    field = [delegate field];
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -37,19 +37,19 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [model updateWithTouches:touches];
+    [field updateWithTouches:touches];
     [self.view setNeedsDisplay];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [model updateWithTouches:touches];
+    [field updateWithTouches:touches];
     [self.view setNeedsDisplay];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [model updateWithTouches:touches];
+    [field updateWithTouches:touches];
     [self.view setNeedsDisplay];
 }
 
