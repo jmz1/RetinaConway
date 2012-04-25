@@ -17,7 +17,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
     }
     return self;
 }
@@ -28,14 +27,19 @@
     [self drawLifeInContext:context];
 }
 
+/*
 size_t getBytes(void *info, void *buffer, size_t count) {
     memset(buffer, 0xf0, count);
     return count;
 }
+ */
 
 //http://stackoverflow.com/questions/2261177/cgimage-from-byte-array
 - (void)drawLifeInContext:(CGContextRef)context
 {
+    //NSData *data = [[NSData alloc] initWithBytesNoCopy:field.data length:field.width * field.height * sizeof(bool)];
+    //UIImage *image = [[UIImage alloc] initWithData:data];
+    
     /*
     CGDataProviderSequentialCallbacks callbacks;
     callbacks.getBytes = getBytes;

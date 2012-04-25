@@ -8,8 +8,9 @@
 
 #import "RCViewController.h"
 #import "RCView.h"
-#import "RCAppDelegate.h"
 #import "RCField.h"
+
+#define UPDATE_INTERVAL 0.025
 
 @interface RCViewController ()
 
@@ -19,21 +20,40 @@
 
 - (void)viewDidLoad
 {
-    RCAppDelegate *delegate = (RCAppDelegate *)[[UIApplication sharedApplication] delegate];
-    field = [delegate field];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
+    field = [[RCField alloc] initWithSize:screenSize];
+    
     
     self.view = [[RCView alloc] init];
     [self.view setMultipleTouchEnabled:YES];
+    
     [(RCView *)self.view setField:field];
     
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+}
+
+- (void)startAnimation
+{
+    timer = [NSTimer scheduledTimerWithTimeInterval:UPDATE_INTERVAL target:self selector:@selector(onTick) userInfo:nil repeats:YES];
+}
+
+- (void)stopAnimation
+{
+    [timer invalidate];
+    timer = nil;
+}
+
+- (void)onTick
+{
+    [self.view setNeedsDisplay];
+    [field iterate];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

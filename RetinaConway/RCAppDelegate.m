@@ -9,25 +9,15 @@
 #import "RCAppDelegate.h"
 
 #import "RCViewController.h"
-#import "RCField.h"
 
 @implementation RCAppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
-@synthesize field;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGFloat screenScale = [[UIScreen mainScreen] scale];
-    CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
-    
-    field = [[RCField alloc] initWithSize:screenSize];
-    //[field start];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[RCViewController alloc] initWithNibName:@"RCViewController_iPhone" bundle:nil];
@@ -42,27 +32,27 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    [field stop];
+    [self.viewController stopAnimation];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [field stop];
+    [self.viewController stopAnimation];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [field start];
+    [self.viewController startAnimation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [field start];
+    [self.viewController startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [field stop];
+    [self.viewController stopAnimation];
 }
 
 @end

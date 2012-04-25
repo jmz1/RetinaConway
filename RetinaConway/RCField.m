@@ -18,12 +18,15 @@
 {
     width = size.width;
     height = size.height;
-    interval = 0.025f;
+    
+    //oldData, newData should be flat arrays
+    //cells should be two-dimensional perhaps
+    //...eventually
     
     cells = malloc(width * height * sizeof(*cells));
     
-    oldData = malloc(width * height * sizeof(char));
-    newData = malloc(width * height * sizeof(char));
+    oldData = malloc(width * height * sizeof(bool));
+    newData = malloc(width * height * sizeof(bool));
 
     int index, north, east, south, west;
     
@@ -57,26 +60,28 @@
     return self;
 }
 
-- (void)start
-{
-    timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(onTick:) userInfo:nil repeats:YES];
-}
-
-- (void)stop
-{
-    [timer invalidate];
-    timer = nil;
-}
-
 - (void)updateWithTouches:(NSSet *)touches
 {
-    
+    NSLog(@"%@", [touches description]);
 }
 
-- (void)onTick:(NSTimer *)timer
+- (void)iterate
 {
-    int neighbours;
+    for (int y = 0; y < 30; y++) {
+        NSMutableString *test = [[NSMutableString alloc] init];
+        for (int x = 0; x < 50; x++) {
+            if (oldData[x + width * y]) {
+                [test appendString:[NSString stringWithFormat:@"O"]];
+            } else {
+                [test appendString:[NSString stringWithFormat:@"_"]];
+            }
+        }
+        NSLog(@"%@", test);
+    }
     
+    int neighbours;
+
+    //totally untested, by and large
     for (int i = 0; i < width * height; i++) {
         RCCell cell = cells[i];
         neighbours = 0;
@@ -92,22 +97,10 @@
         }
     }
     
-    memcpy(oldData, newData, width * height * sizeof(char));
+    memcpy(oldData, newData, width * height * sizeof(bool));
     
-    
-    for (int i = 0; i < 50; i++) {
-        NSMutableString *test = [[NSMutableString alloc] init];
-        for (int j = 0; j < 50; j++) {
-            int point = oldData[j + width * i];
-            if (point == 0)
-                [test appendString:[NSString stringWithFormat:@"_"]];
-            else 
-                [test appendString:[NSString stringWithFormat:@"#"]];
-        }
-        NSLog(@"%@", test);
-    }
-    
-    NSLog(@"Iterate");
+    NSLog(@"Iterated");
+
 }
 
 @end

@@ -12,7 +12,11 @@
 
 @interface RCViewController : UIViewController
 {
+    NSTimer *timer;
     RCField *field;
 }
+
+- (void)startAnimation;
+- (void)stopAnimation;
 
 @end
