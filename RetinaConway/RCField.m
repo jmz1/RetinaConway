@@ -94,13 +94,19 @@
     
     memcpy(oldData, newData, width * height * sizeof(char));
     
-    NSMutableString *test = [[NSMutableString alloc] init];
     
-    for (int i = 0; i < width; i++) {
-        [test appendString:[NSString stringWithFormat:@"%c", oldData[i]]];
+    for (int i = 0; i < 50; i++) {
+        NSMutableString *test = [[NSMutableString alloc] init];
+        for (int j = 0; j < 50; j++) {
+            int point = oldData[j + width * i];
+            if (point == 0)
+                [test appendString:[NSString stringWithFormat:@"_"]];
+            else 
+                [test appendString:[NSString stringWithFormat:@"#"]];
+        }
+        NSLog(@"%@", test);
     }
     
-    NSLog(@"%@", test);
     NSLog(@"Iterate");
 }
 
