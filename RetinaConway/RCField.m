@@ -10,6 +10,8 @@
 
 @implementation RCField
 
+@synthesize width;
+@synthesize height;
 @synthesize data;
 
 - (id)initWithSize:(CGSize)size;
@@ -30,7 +32,7 @@
             east = (x + 1) % width;
             south = (y + 1) % height * width;
             west = (x - 1 + width) % width;
-            
+        
             cells[index].oldValue = index % 2;
             cells[index].newValue = index % 2;
             
@@ -48,6 +50,12 @@
     }
     
     NSLog(@"Field initialised");
+    
+    /*
+    for (int i = 0; i < 400; i++) {
+        NSLog(@"%i", *data[i]);
+    }
+     */
     
     return self;
 }
@@ -91,7 +99,7 @@
         cell.oldValue = cell.newValue;
     }
     
-    NSLog(@"Iterate");
+    //NSLog(@"Iterate");
 }
 
 @end

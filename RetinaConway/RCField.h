@@ -14,8 +14,8 @@ typedef struct _RCCell {
 
 @interface RCField : NSObject
 {
-    uint width;
-    uint height;
+    int width;
+    int height;
     float interval;
     
     RCCell *cells;
@@ -24,6 +24,8 @@ typedef struct _RCCell {
     NSTimer *timer;
 }
 
+@property (nonatomic) int width;
+@property (nonatomic) int height;
 @property (readonly) int **data;
 
 - (id)initWithSize:(CGSize)size;

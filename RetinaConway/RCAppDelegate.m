@@ -27,7 +27,7 @@
     CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
     
     field = [[RCField alloc] initWithSize:screenSize];
-    [field start];
+    //[field start];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[RCViewController alloc] initWithNibName:@"RCViewController_iPhone" bundle:nil];

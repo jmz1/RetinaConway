@@ -19,11 +19,12 @@
 
 - (void)viewDidLoad
 {
-    self.view = [[RCView alloc] init];
-    [self.view setMultipleTouchEnabled:YES];
-    
     RCAppDelegate *delegate = (RCAppDelegate *)[[UIApplication sharedApplication] delegate];
     field = [delegate field];
+    
+    self.view = [[RCView alloc] init];
+    [self.view setMultipleTouchEnabled:YES];
+    [(RCView *)self.view setField:field];
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.

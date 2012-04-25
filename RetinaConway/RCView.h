@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class RCField;
+
 @interface RCView : UIView
+{
+    RCField *field;
+}
+
+@property (nonatomic, retain) RCField *field;
 
 @end
