@@ -7,8 +7,8 @@
 //
 
 typedef struct _RCCell {
-    int oldValue;
-    int newValue;
+    char *oldValue;
+    char *newValue;
     struct _RCCell *neighbours[8];
 } RCCell;
 
@@ -19,14 +19,15 @@ typedef struct _RCCell {
     float interval;
     
     RCCell *cells;
-    int **data;
+    char *oldData;
+    char *newData;
     
     NSTimer *timer;
 }
 
 @property (nonatomic) int width;
 @property (nonatomic) int height;
-@property (readonly) int **data;
+@property (readonly) char *data;
 
 - (id)initWithSize:(CGSize)size;
 

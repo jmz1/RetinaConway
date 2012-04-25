@@ -12,7 +12,7 @@
 
 @synthesize width;
 @synthesize height;
-@synthesize data;
+@synthesize data = oldData;
 
 - (id)initWithSize:(CGSize)size;
 {
@@ -21,7 +21,9 @@
     interval = 0.025f;
     
     cells = malloc(width * height * sizeof(*cells));
-    data = malloc(width * height * sizeof(int));
+    
+    oldData = malloc(width * height * sizeof(char));
+    newData = malloc(width * height * sizeof(char));
 
     int index, north, east, south, west;
     
@@ -32,11 +34,12 @@
             east = (x + 1) % width;
             south = (y + 1) % height * width;
             west = (x - 1 + width) % width;
-        
-            cells[index].oldValue = index % 2;
-            cells[index].newValue = index % 2;
             
-            data[index] = &cells[index].oldValue;
+            oldData[index] = arc4random() % 2;
+            newData[index] = 0;
+            
+            cells[index].oldValue = &oldData[index];
+            cells[index].newValue = &newData[index];
             
             cells[index].neighbours[0] = &cells[x + north];
             cells[index].neighbours[1] = &cells[east + north];
@@ -50,13 +53,7 @@
     }
     
     NSLog(@"Field initialised");
-    
-    /*
-    for (int i = 0; i < 400; i++) {
-        NSLog(@"%i", *data[i]);
-    }
-     */
-    
+
     return self;
 }
 
@@ -84,22 +81,27 @@
         RCCell cell = cells[i];
         neighbours = 0;
         for (int j = 0; j < 8; j++) {
-            neighbours += cell.neighbours[j]->oldValue;
+            neighbours += *cell.neighbours[j]->oldValue;
         }
-        if (cell.oldValue == 1) {
+        if (*cell.oldValue == 1) {
             if (neighbours < 2 || neighbours > 3) {
-                cell.newValue = 0;
+                newData[i] = 0;
             }
         } else if (neighbours == 3) {
-            cell.newValue = 1;
+            newData[i] = 1;
         }
     }
-    for (int i = 0; i < width * height; i++) {
-        RCCell cell = cells[i];
-        cell.oldValue = cell.newValue;
+    
+    memcpy(oldData, newData, width * height * sizeof(char));
+    
+    NSMutableString *test = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < width; i++) {
+        [test appendString:[NSString stringWithFormat:@"%c", oldData[i]]];
     }
     
-    //NSLog(@"Iterate");
+    NSLog(@"%@", test);
+    NSLog(@"Iterate");
 }
 
 @end

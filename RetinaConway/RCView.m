@@ -28,32 +28,40 @@
     [self drawLifeInContext:context];
 }
 
+size_t getBytes(void *info, void *buffer, size_t count) {
+    memset(buffer, 0xf0, count);
+    return count;
+}
+
+//http://stackoverflow.com/questions/2261177/cgimage-from-byte-array
 - (void)drawLifeInContext:(CGContextRef)context
 {
+    /*
     CGDataProviderSequentialCallbacks callbacks;
-    callbacks.getBytes = field.data;
+    callbacks.getBytes = getBytes;
     
     CGDataProviderRef provider = CGDataProviderCreateSequential(NULL, &callbacks);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
     
-    CGImageRef img = CGImageCreate(field.width,
-                                   field.height,
+    CGImageRef image = CGImageCreate(64,
+                                   64,
                                    8,
-                                   8,
-                                   field.width,
-                                   colorSpace,
+                                   24,
+                                   64*3,
+                                   space,
                                    kCGBitmapByteOrderDefault,
                                    provider,
                                    NULL,
                                    NO,
                                    kCGRenderingIntentDefault);
     
-    CGColorSpaceRelease(colorSpace);
+    CGColorSpaceRelease(space);
     CGDataProviderRelease(provider);
     
-    // use the created CGImage
+    CGContextDrawImage(context, self.frame, image);
     
-    CGImageRelease(img);
+    CGImageRelease(image);
+     */
 }
 
 @end
