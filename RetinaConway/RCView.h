@@ -1,5 +1,5 @@
 //
-//  RCViewController.h
+//  RCView.h
 //  RetinaConway
 //
 //  Created by Daniel Clelland on 25/04/12.
@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class RCModel;
-
-@interface RCViewController : UIViewController
-{
-    RCModel *model;
-}
+@interface RCView : UIView
 
 @end

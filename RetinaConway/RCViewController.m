@@ -7,6 +7,9 @@
 //
 
 #import "RCViewController.h"
+#import "RCView.h"
+#import "RCAppDelegate.h"
+#import "RCModel.h"
 
 @interface RCViewController ()
 
@@ -16,6 +19,12 @@
 
 - (void)viewDidLoad
 {
+    self.view = [[RCView alloc] init];
+    [self.view setMultipleTouchEnabled:YES];
+    
+    RCAppDelegate *delegate = (RCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    model = [delegate model];
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -26,13 +35,27 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [model updateWithTouches:touches];
+    [self.view setNeedsDisplay];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [model updateWithTouches:touches];
+    [self.view setNeedsDisplay];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [model updateWithTouches:touches];
+    [self.view setNeedsDisplay];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+    return NO;
 }
 
 @end

@@ -9,14 +9,19 @@
 #import "RCAppDelegate.h"
 
 #import "RCViewController.h"
+#import "RCModel.h"
 
 @implementation RCAppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
+@synthesize model;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    model = [[RCModel alloc] init];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

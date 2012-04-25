@@ -9,11 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @class RCViewController;
+@class RCModel;
 
 @interface RCAppDelegate : UIResponder <UIApplicationDelegate>
+{
+    RCModel *model;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) RCViewController *viewController;
+
+@property (strong, nonatomic) RCModel *model;
 
 @end

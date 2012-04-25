@@ -16,6 +16,8 @@
 		65804C751547EAAC00F9C501 /* RCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C741547EAAC00F9C501 /* RCViewController.m */; };
 		65804C781547EAAC00F9C501 /* RCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65804C761547EAAC00F9C501 /* RCViewController_iPhone.xib */; };
 		65804C7B1547EAAC00F9C501 /* RCViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65804C791547EAAC00F9C501 /* RCViewController_iPad.xib */; };
+		65804C831547EC4E00F9C501 /* RCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C821547EC4E00F9C501 /* RCModel.m */; };
+		65804C8A1547ECEA00F9C501 /* RCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65804C891547ECEA00F9C501 /* RCView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +25,20 @@
 		65804C611547EAAB00F9C501 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		65804C631547EAAB00F9C501 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65804C651547EAAB00F9C501 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		65804C691547EAAB00F9C501 /* RetinaConway-Info.plist */ = {isa = PBXFileReference; path = "RetinaConway-Info.plist"; sourceTree = "<group>"; };
+		65804C691547EAAB00F9C501 /* RetinaConway-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RetinaConway-Info.plist"; sourceTree = "<group>"; };
 		65804C6B1547EAAB00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65804C6D1547EAAB00F9C501 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		65804C6F1547EAAB00F9C501 /* RetinaConway-Prefix.pch */ = {isa = PBXFileReference; path = "RetinaConway-Prefix.pch"; sourceTree = "<group>"; };
-		65804C701547EAAB00F9C501 /* RCAppDelegate.h */ = {isa = PBXFileReference; path = RCAppDelegate.h; sourceTree = "<group>"; };
+		65804C6F1547EAAB00F9C501 /* RetinaConway-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RetinaConway-Prefix.pch"; sourceTree = "<group>"; };
+		65804C701547EAAB00F9C501 /* RCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCAppDelegate.h; sourceTree = "<group>"; };
 		65804C711547EAAC00F9C501 /* RCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCAppDelegate.m; sourceTree = "<group>"; };
-		65804C731547EAAC00F9C501 /* RCViewController.h */ = {isa = PBXFileReference; path = RCViewController.h; sourceTree = "<group>"; };
+		65804C731547EAAC00F9C501 /* RCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCViewController.h; sourceTree = "<group>"; };
 		65804C741547EAAC00F9C501 /* RCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCViewController.m; sourceTree = "<group>"; };
 		65804C771547EAAC00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RCViewController_iPhone.xib; sourceTree = "<group>"; };
 		65804C7A1547EAAC00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RCViewController_iPad.xib; sourceTree = "<group>"; };
+		65804C811547EC4E00F9C501 /* RCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCModel.h; sourceTree = "<group>"; };
+		65804C821547EC4E00F9C501 /* RCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCModel.m; sourceTree = "<group>"; };
+		65804C881547ECEA00F9C501 /* RCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCView.h; sourceTree = "<group>"; };
+		65804C891547ECEA00F9C501 /* RCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +87,12 @@
 			children = (
 				65804C701547EAAB00F9C501 /* RCAppDelegate.h */,
 				65804C711547EAAC00F9C501 /* RCAppDelegate.m */,
+				65804C811547EC4E00F9C501 /* RCModel.h */,
+				65804C821547EC4E00F9C501 /* RCModel.m */,
 				65804C731547EAAC00F9C501 /* RCViewController.h */,
 				65804C741547EAAC00F9C501 /* RCViewController.m */,
+				65804C881547ECEA00F9C501 /* RCView.h */,
+				65804C891547ECEA00F9C501 /* RCView.m */,
 				65804C761547EAAC00F9C501 /* RCViewController_iPhone.xib */,
 				65804C791547EAAC00F9C501 /* RCViewController_iPad.xib */,
 				65804C681547EAAB00F9C501 /* Supporting Files */,
@@ -169,6 +179,8 @@
 				65804C6E1547EAAB00F9C501 /* main.m in Sources */,
 				65804C721547EAAC00F9C501 /* RCAppDelegate.m in Sources */,
 				65804C751547EAAC00F9C501 /* RCViewController.m in Sources */,
+				65804C831547EC4E00F9C501 /* RCModel.m in Sources */,
+				65804C8A1547ECEA00F9C501 /* RCView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
