@@ -47,6 +47,8 @@
         }
     }
     
+    NSLog(@"Field initialised");
+    
     return self;
 }
 
@@ -68,7 +70,28 @@
 
 - (void)onTick:(NSTimer *)timer
 {
-    //NSLog(@"iterate");
+    int neighbours;
+    
+    for (int i = 0; i < width * height; i++) {
+        RCCell cell = cells[i];
+        neighbours = 0;
+        for (int j = 0; j < 8; j++) {
+            neighbours += cell.neighbours[j]->oldValue;
+        }
+        if (cell.oldValue == 1) {
+            if (neighbours < 2 || neighbours > 3) {
+                cell.newValue = 0;
+            }
+        } else if (neighbours == 3) {
+            cell.newValue = 1;
+        }
+    }
+    for (int i = 0; i < width * height; i++) {
+        RCCell cell = cells[i];
+        cell.oldValue = cell.newValue;
+    }
+    
+    NSLog(@"Iterate");
 }
 
 @end
