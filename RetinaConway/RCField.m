@@ -30,11 +30,16 @@
     newData = malloc(width * height * sizeof(bool));
     
     int counter = 0;
+    int maxindextest = 0;
     
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             
             cells[y][x].index = y*width + x;
+            
+            if ((y*width + x) > maxindextest){
+                maxindextest = y*width + x;
+            }
             
             cells[y][x].neighbours[0] = &(cells[(y+1+height)%height][(x+1+width)%width]);
             cells[y][x].neighbours[1] = &(cells[(y+1+height)%height][(x+0+width)%width]);
@@ -53,6 +58,9 @@
     }
     
     NSLog(@"Field initialised");
+    
+    
+    NSLog(@"%d", maxindextest);
 
     return self;
 }
