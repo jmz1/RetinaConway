@@ -16,42 +16,39 @@
 
 - (id)initWithSize:(CGSize)size;
 {
-    width = size.width;
-    height = size.height;
+    width = (unsigned int) size.width;
+    height = (unsigned int) size.height;
     
-    //oldData, newData should be flat arrays
-    //cells should be two-dimensional perhaps
-    //...eventually
-    
-    cells = malloc(width * height * sizeof(*cells));
+    // fuckery for dynamically allocated 2d array
+    cells = malloc(height * sizeof(RCCell **));
+    for(int i = 0; i < height; i++)
+    {
+		cells[i] = malloc(width * sizeof(RCCell *));
+    }
     
     oldData = malloc(width * height * sizeof(bool));
     newData = malloc(width * height * sizeof(bool));
-
-    int index, north, east, south, west;
+    
+    int counter = 0;
     
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            index = x + y * width;
-            north = (y - 1 + height) % height * width;
-            east = (x + 1) % width;
-            south = (y + 1) % height * width;
-            west = (x - 1 + width) % width;
             
-            oldData[index] = arc4random() % 2;
-            newData[index] = 0;
+            cells[y][x].index = y*width + x;
             
-            cells[index].oldValue = &oldData[index];
-            cells[index].newValue = &newData[index];
+            cells[y][x].neighbours[0] = &(cells[(y+1+height)%height][(x+1+width)%width]);
+            cells[y][x].neighbours[1] = &(cells[(y+1+height)%height][(x+0+width)%width]);
+            cells[y][x].neighbours[2] = &(cells[(y+1+height)%height][(x-1+width)%width]);
+            cells[y][x].neighbours[3] = &(cells[(y-1+height)%height][(x+1+width)%width]);
+            cells[y][x].neighbours[4] = &(cells[(y-1+height)%height][(x+0+width)%width]);
+            cells[y][x].neighbours[5] = &(cells[(y-1+height)%height][(x-1+width)%width]);
+            cells[y][x].neighbours[6] = &(cells[(y+0+height)%height][(x+1+width)%width]);
+            cells[y][x].neighbours[7] = &(cells[(y+0+height)%height][(x-1+width)%width]);
             
-            cells[index].neighbours[0] = &cells[x + north];
-            cells[index].neighbours[1] = &cells[east + north];
-            cells[index].neighbours[2] = &cells[east + y];
-            cells[index].neighbours[3] = &cells[east + south];
-            cells[index].neighbours[4] = &cells[x + south];
-            cells[index].neighbours[5] = &cells[west + south];
-            cells[index].neighbours[6] = &cells[west + y];
-            cells[index].neighbours[7] = &cells[west + north];
+            oldData[(cells[y][x].index)] = arc4random() % 2;
+            newData[(cells[y][x].index)] = 0;
+            
+            counter++;
         }
     }
     
@@ -79,23 +76,44 @@
         NSLog(@"%@", test);
     }
     
-    int neighbours;
+    // MODULO TEST
+    int z = 0;
+    //NSLog(@"%d", 666);
+    NSLog(@"%d", (z-1+width)%width);
+    int neighboursAlive;
 
-    //totally untested, by and large
-    for (int i = 0; i < width * height; i++) {
-        RCCell cell = cells[i];
-        neighbours = 0;
-        for (int j = 0; j < 8; j++) {
-            neighbours += *cell.neighbours[j]->oldValue;
-        }
-        if (*cell.oldValue == 1) {
-            if (neighbours < 2 || neighbours > 3) {
-                newData[i] = 0;
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            
+            RCCell *cell = &(cells[y][x]);
+            neighboursAlive = 0;
+            for (int i = 0; i < 8; i++) {
+                neighboursAlive += oldData[(cell->neighbours[i]->index)];
             }
-        } else if (neighbours == 3) {
-            newData[i] = 1;
+            // dead cell
+            if (oldData[cell->index] == 0){
+                if (neighboursAlive == 3){
+                    newData[cell->index] = 1;
+                }
+                else{
+                    newData[cell->index] = 0;
+                }
+            }
+            // live cell
+            else{
+                if ((neighboursAlive == 2) || (neighboursAlive == 3)){
+                    newData[cell->index] = 1;
+                }
+                else{
+                    newData[cell->index] = 0;
+                }
+            }
+            
+            
         }
     }
+
     
     memcpy(oldData, newData, width * height * sizeof(bool));
     

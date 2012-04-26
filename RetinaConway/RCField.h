@@ -7,24 +7,28 @@
 //
 
 typedef struct _RCCell {
-    bool *oldValue;
-    bool *newValue;
+    int index;
     struct _RCCell *neighbours[8];
 } RCCell;
 
 @interface RCField : NSObject
 {
-    int width;
-    int height;
+    unsigned int width;
+    unsigned int height;
     
-    RCCell *cells;
+    RCCell **cells;
     bool *oldData;
     bool *newData;
     
 }
 
-@property (nonatomic) int width;
-@property (nonatomic) int height;
+// oh what the heck
+
+@property unsigned int width;
+@property unsigned int height;
+
+//@property (nonatomic) unsigned int width;
+//@property (nonatomic) unsigned int height;
 
 @property (readonly) bool *data;
 

@@ -35,7 +35,7 @@
 		65804C741547EAAC00F9C501 /* RCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCViewController.m; sourceTree = "<group>"; };
 		65804C771547EAAC00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RCViewController_iPhone.xib; sourceTree = "<group>"; };
 		65804C7A1547EAAC00F9C501 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RCViewController_iPad.xib; sourceTree = "<group>"; };
-		65804C811547EC4E00F9C501 /* RCField.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RCField.h; sourceTree = "<group>"; };
+		65804C811547EC4E00F9C501 /* RCField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCField.h; sourceTree = "<group>"; };
 		65804C821547EC4E00F9C501 /* RCField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCField.m; sourceTree = "<group>"; };
 		65804C881547ECEA00F9C501 /* RCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCView.h; sourceTree = "<group>"; };
 		65804C891547ECEA00F9C501 /* RCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCView.m; sourceTree = "<group>"; };
